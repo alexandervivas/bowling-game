@@ -15,7 +15,7 @@ public class Frame {
     }
 
     public void roll(int pins) {
-        if(first && second) {
+        if(isFinished()) {
             return;
         }
 
@@ -26,6 +26,14 @@ public class Frame {
             firstBall = pins;
             first = true;
         }
+    }
+
+    public int getFirstBall() {
+        return firstBall;
+    }
+
+    public int getSecondBall() {
+        return secondBall;
     }
 
     public boolean isStrike() {

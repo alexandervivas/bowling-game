@@ -8,6 +8,7 @@ import java.util.Map;
 public class BowlingGame extends Game {
 
     private Map<Integer, Frame> frames;
+    private static final int MAX_FRAMES = 10;
 
     public BowlingGame() {
         super(new BowlingScoreCalculator());
@@ -31,7 +32,7 @@ public class BowlingGame extends Game {
 
         Frame frame = frames.get(frames.size() - 1);
 
-        if(frame.isFinished()) {
+        if(frame.isFinished() && frames.size() < MAX_FRAMES) {
             return createFrame();
         }
 

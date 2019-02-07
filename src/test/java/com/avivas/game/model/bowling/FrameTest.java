@@ -2,8 +2,7 @@ package com.avivas.game.model.bowling;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FrameTest {
 
@@ -53,6 +52,18 @@ public class FrameTest {
 
         assertTrue(frame.isStrike());
         assertTrue(frame.isFinished());
+    }
+
+    @Test
+    public void ifFinishedDoNotModify() {
+        Frame frame = new Frame();
+
+        frame.roll(10);
+        frame.roll(5);
+
+        assertTrue(frame.isFinished());
+        assertEquals(frame.getFirstBall(), 10);
+        assertEquals(frame.getSecondBall(), 0);
     }
 
 }
