@@ -1,4 +1,4 @@
-package com.avivas.bowling;
+package com.avivas.game;
 
 import static org.junit.Assert.assertTrue;
 

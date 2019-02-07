@@ -1,4 +1,4 @@
-package com.avivas.bowling.model;
+package com.avivas.game.model.bowling;
 
 public class Frame {
 
