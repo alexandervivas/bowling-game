@@ -8,7 +8,7 @@ public class BowlingGameTest {
 
     @Test
     public void returnEmptyFrameForEmptyGame() {
-        BowlingGame bowlingGame = new BowlingGame();
+        BowlingGame bowlingGame = new BowlingGame(java.util.UUID.randomUUID().toString());
         Frame frame = bowlingGame.getCurrentFrame();
 
         assertTrue(frame.isEmpty());
@@ -16,7 +16,7 @@ public class BowlingGameTest {
 
     @Test
     public void returnFrameWithOneBall() {
-        BowlingGame bowlingGame = new BowlingGame();
+        BowlingGame bowlingGame = new BowlingGame(java.util.UUID.randomUUID().toString());
         bowlingGame.addScore(5);
         Frame frame = bowlingGame.getCurrentFrame();
 
@@ -25,7 +25,7 @@ public class BowlingGameTest {
 
     @Test
     public void createNewFrameAfterAFinishedOne() {
-        BowlingGame bowlingGame = new BowlingGame();
+        BowlingGame bowlingGame = new BowlingGame(java.util.UUID.randomUUID().toString());
 
         bowlingGame.addScore(5);
         bowlingGame.addScore(5);

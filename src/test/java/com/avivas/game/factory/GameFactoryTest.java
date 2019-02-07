@@ -17,14 +17,14 @@ public class GameFactoryTest {
     @Test
     public void createValidGame() {
 
-        assertNotNull(GameFactory.getInstance().createGame(GameEnum.BOWLING));
+        assertNotNull(GameFactory.getInstance().createGame(GameEnum.BOWLING, java.util.UUID.randomUUID().toString()));
 
     }
 
     @Test
     public void createInvalidGame() {
 
-        assertNull(GameFactory.getInstance().createGame(GameEnum.OTHER));
+        assertNull(GameFactory.getInstance().createGame(GameEnum.OTHER, java.util.UUID.randomUUID().toString()));
 
     }
 }

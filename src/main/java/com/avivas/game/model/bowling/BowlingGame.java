@@ -11,8 +11,8 @@ public class BowlingGame extends Game {
     private Map<Integer, Frame> frames;
     private static final int MAX_FRAMES = 10;
 
-    public BowlingGame() {
-        super(new BowlingScoreCalculator());
+    public BowlingGame(String player) {
+        super(new BowlingScoreCalculator(), player);
         frames = new HashMap<Integer, Frame>();
     }
 
@@ -23,10 +23,27 @@ public class BowlingGame extends Game {
 
     @Override
     public String getPrintableScore() {
-        StringBuilder firstLine = new StringBuilder("Frame");
-        frames.entrySet().stream().forEach(entry -> firstLine.append("\t").append(entry.getKey() + 1));
+        StringBuilder printableScore = new StringBuilder(player).append("\nPinfalls");
 
-        return firstLine.toString();
+        Map<Integer, Frame> data = (Map<Integer, Frame>) scoreCalculator.calculate(frames);
+
+        data.entrySet().stream().forEach(entry -> {
+            Frame frame = entry.getValue();
+
+            printableScore.append("\t");
+
+            if(frame.isStrike()) {
+                printableScore.append("\tX");
+            } else if(frame.isSpare()) {
+                printableScore.append(frame.getFirstBall()).append("\t/");
+            } else {
+                printableScore.append(frame.getFirstBall()).append("\t").append(frame.getSecondBall());
+            }
+
+
+        });
+
+        return printableScore.toString();
     }
 
     public Frame getCurrentFrame() {

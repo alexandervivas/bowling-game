@@ -26,9 +26,9 @@ public class GameFactory {
 
     }
 
-    public Game createGame(GameEnum gameEnum) {
+    public Game createGame(GameEnum gameEnum, String player) {
         switch (gameEnum) {
-            case BOWLING: return new BowlingGame();
+            case BOWLING: return new BowlingGame(player);
             default: return null;
         }
     }

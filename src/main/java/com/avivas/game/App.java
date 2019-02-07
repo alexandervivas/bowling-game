@@ -27,17 +27,19 @@ public class App
                 String[] line = l.split("\t");
 
                 if(!players.containsKey(line[0])) {
-                    players.put(line[0], GameFactory.getInstance().createGame(GameEnum.BOWLING));
+                    players.put(line[0], GameFactory.getInstance().createGame(GameEnum.BOWLING, line[0]));
                 }
 
                 int score = 0;
-                
+
                 if(!line[1].equals("F")) {
                     score = Integer.valueOf(line[1]);
                 }
 
                 players.get(line[0]).addScore(score);
             } );
+
+            players.entrySet().stream().forEach(entry -> System.out.println(entry.getValue().getPrintableScore()));
 
 
 

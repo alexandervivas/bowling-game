@@ -9,7 +9,7 @@ public class BowlingScoreCalculator implements ScoreCalculator<Map<Integer, Fram
 
     @Override
     public Map<Integer, Frame> calculate(Map<Integer, Frame> data) {
-        return new HashMap<>();
+        return data;
     }
 
 }
