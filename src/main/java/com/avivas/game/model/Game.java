@@ -10,6 +10,6 @@ public abstract class Game {
 
     public abstract void addScore(int points);
 
-    public abstract int getScore();
+    public abstract String getPrintableScore();
 
 }

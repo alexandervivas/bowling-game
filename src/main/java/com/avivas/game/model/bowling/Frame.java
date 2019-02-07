@@ -6,6 +6,7 @@ public class Frame {
     private int secondBall;
     private boolean first;
     private boolean second;
+    private int score = 0;
 
     public Frame() {
         firstBall = 0;
@@ -50,6 +51,10 @@ public class Frame {
 
     public boolean isEmpty() {
         return !first && !second;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
 }

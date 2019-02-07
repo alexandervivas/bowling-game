@@ -1,6 +1,7 @@
 package com.avivas.game.model.bowling;
 
 import com.avivas.game.model.Game;
+import com.avivas.game.model.ScoreCalculator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,8 +22,11 @@ public class BowlingGame extends Game {
     }
 
     @Override
-    public int getScore() {
-        return scoreCalculator.calculate(frames);
+    public String getPrintableScore() {
+        StringBuilder firstLine = new StringBuilder("Frame");
+        frames.entrySet().stream().forEach(entry -> firstLine.append("\t").append(entry.getKey() + 1));
+
+        return firstLine.toString();
     }
 
     public Frame getCurrentFrame() {

@@ -1,7 +1,7 @@
 package com.avivas.game.model;
 
-public interface ScoreCalculator<T> {
+public interface ScoreCalculator<T, K> {
 
-    int calculate(T data);
+    K calculate(T data);
 
 }

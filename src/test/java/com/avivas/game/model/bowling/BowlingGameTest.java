@@ -24,13 +24,6 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void returnNoPointsForEmptyGame() {
-        BowlingGame bowlingGame = new BowlingGame();
-
-        assertEquals(bowlingGame.getScore(), 0);
-    }
-
-    @Test
     public void createNewFrameAfterAFinishedOne() {
         BowlingGame bowlingGame = new BowlingGame();
 
