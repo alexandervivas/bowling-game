@@ -24,7 +24,7 @@ public class BowlingGame extends Game {
         return scoreCalculator.calculate(frames);
     }
 
-    private Frame getCurrentFrame() {
+    public Frame getCurrentFrame() {
         if(frames.isEmpty()) {
             return createFrame();
         }

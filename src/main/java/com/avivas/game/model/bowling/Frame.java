@@ -37,7 +37,11 @@ public class Frame {
     }
 
     public boolean isFinished() {
-        return first && second;
+        return isStrike() || first && second;
+    }
+
+    public boolean isEmpty() {
+        return !first && !second;
     }
 
 }
