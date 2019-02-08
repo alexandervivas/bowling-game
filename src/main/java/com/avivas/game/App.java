@@ -3,12 +3,14 @@ package com.avivas.game;
 import com.avivas.game.enums.GameEnum;
 import com.avivas.game.factory.GameFactory;
 import com.avivas.game.model.Game;
+import com.avivas.game.model.bowling.BowlingGame;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -39,12 +41,19 @@ public class App
                 players.get(line[0]).addScore(score);
             } );
 
-            players.entrySet().stream().forEach(entry -> System.out.println(entry.getValue().getPrintableScore()));
-
-
+            printResults(players);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void printResults(Map<String, Game> players) {
+
+        System.out.print("Frame");
+        IntStream.rangeClosed(1, 10).forEach(i -> System.out.print("\t\t" + i));
+        System.out.print("\n");
+        players.entrySet().stream().forEach(entry -> System.out.println(entry.getValue().getPrintableScore()));
+
     }
 }

@@ -8,7 +8,7 @@ public class FrameTest {
 
     @Test
     public void emptyFrame() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
 
         assertTrue(frame.isEmpty());
         assertFalse(frame.isFinished());
@@ -16,7 +16,7 @@ public class FrameTest {
 
     @Test
     public void isFinished() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
         frame.roll(5);
         frame.roll(3);
 
@@ -25,7 +25,7 @@ public class FrameTest {
 
     @Test
     public void isNotFinished() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
         frame.roll(5);
 
         assertFalse(frame.isFinished());
@@ -33,7 +33,7 @@ public class FrameTest {
 
     @Test
     public void isSpare() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
         frame.roll(5);
 
         assertFalse(frame.isFinished());
@@ -46,7 +46,7 @@ public class FrameTest {
 
     @Test
     public void isStrike() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
 
         frame.roll(10);
 
@@ -56,7 +56,7 @@ public class FrameTest {
 
     @Test
     public void ifFinishedDoNotModify() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(false);
 
         frame.roll(10);
         frame.roll(5);

@@ -27,7 +27,7 @@ public class BowlingGame extends Game {
 
         Map<Integer, Frame> data = (Map<Integer, Frame>) scoreCalculator.calculate(frames);
 
-        data.entrySet().stream().forEach(entry -> {
+        data.entrySet().stream().filter(entry -> !entry.getValue().isFinalFrame()).forEach(entry -> {
             Frame frame = entry.getValue();
 
             printableScore.append("\t");
@@ -40,7 +40,13 @@ public class BowlingGame extends Game {
                 printableScore.append(frame.getFirstBall()).append("\t").append(frame.getSecondBall());
             }
 
+        });
 
+        data.entrySet().stream().filter(entry -> entry.getValue().isFinalFrame()).forEach(entry -> {
+            Frame frame = entry.getValue();
+            printableScore.append("\t").append(frame.getFirstBall() == 10 ? "X" : frame.getFirstBall());
+            printableScore.append("\t").append(frame.getSecondBall() == 10 ? "X" : frame.getSecondBall());
+            printableScore.append("\t").append(frame.getThirdBall() == 10 ? "X" : frame.getThirdBall());
         });
 
         return printableScore.toString();
@@ -61,7 +67,7 @@ public class BowlingGame extends Game {
     }
 
     private Frame createFrame() {
-        Frame frame = new Frame();
+        Frame frame = new Frame(frames.size() == MAX_FRAMES - 1);
         frames.put(frames.size(), frame);
         return frame;
     }
