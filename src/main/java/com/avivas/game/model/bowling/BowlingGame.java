@@ -1,7 +1,6 @@
 package com.avivas.game.model.bowling;
 
 import com.avivas.game.model.Game;
-import com.avivas.game.model.ScoreCalculator;
 
 import java.util.HashMap;
 import java.util.Map;
