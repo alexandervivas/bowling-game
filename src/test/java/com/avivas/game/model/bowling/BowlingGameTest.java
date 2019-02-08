@@ -39,7 +39,7 @@ public class BowlingGameTest {
     public void getPrintableScoreAllZero() {
         BowlingGame bowlingGame = new BowlingGame("Test");
 
-        while(!bowlingGame.getCurrentFrame().isFinalFrame() && !bowlingGame.getCurrentFrame().isFinished()) {
+        while(!bowlingGame.getCurrentFrame().isFinalFrame() || !bowlingGame.getCurrentFrame().isFinished()) {
             bowlingGame.addScore(0);
         }
 
@@ -52,13 +52,13 @@ public class BowlingGameTest {
     public void getPrintableScoreAllStrike() {
         BowlingGame bowlingGame = new BowlingGame("Test");
 
-        while(!bowlingGame.getCurrentFrame().isFinalFrame() && !bowlingGame.getCurrentFrame().isFinished()) {
+        while(!bowlingGame.getCurrentFrame().isFinalFrame() || !bowlingGame.getCurrentFrame().isFinished()) {
             bowlingGame.addScore(10);
         }
 
         assertEquals(bowlingGame.getPrintableScore(), "Test\n" +
-                "Pinfalls\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t0\t0\t0\n" +
-                "Score\t\t30\t\t60\t\t90\t\t120\t\t150\t\t180\t\t210\t\t230\t\t240\t\t240");
+                "Pinfalls\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\t\tX\tX\tX\tX\n" +
+                "Score\t\t30\t\t60\t\t90\t\t120\t\t150\t\t180\t\t210\t\t240\t\t270\t\t300");
     }
 
     @Test
