@@ -14,6 +14,7 @@ public class GameFactory {
 
         if(instance == null) {
 
+            // double validation and synchronized to make this thread-safe
             synchronized (GameFactory.class) {
                 if(instance == null) {
                     instance = new GameFactory();
@@ -26,11 +27,18 @@ public class GameFactory {
 
     }
 
-    public Game createGame(GameEnum gameEnum, String player) {
-        switch (gameEnum) {
-            case BOWLING: return new BowlingGame(player);
-            default: return null;
+    /**
+     * Creates a game depending on the name of the game
+     * @param gameEnum: name of the game
+     * @param player: name of player
+     * @return a new game for player
+     */
+    public Game createGameForPlayer(GameEnum gameEnum, String player) {
+        // @TODO: change for switch as soon as there is support for more games
+        if(gameEnum == GameEnum.BOWLING) {
+            return new BowlingGame(player);
         }
+        return null;
     }
 
 }

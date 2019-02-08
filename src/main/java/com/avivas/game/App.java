@@ -3,7 +3,6 @@ package com.avivas.game;
 import com.avivas.game.enums.GameEnum;
 import com.avivas.game.factory.GameFactory;
 import com.avivas.game.model.Game;
-import com.avivas.game.model.bowling.BowlingGame;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,6 +20,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        // map to store player's name and the player's game
         Map<String, Game> players = new HashMap<String, Game>();
 
         try (Stream<String> stream = Files.lines(Paths.get(args[0]))) {
@@ -29,11 +29,12 @@ public class App
                 String[] line = l.split("\t");
 
                 if(!players.containsKey(line[0])) {
-                    players.put(line[0], GameFactory.getInstance().createGame(GameEnum.BOWLING, line[0]));
+                    players.put(line[0], GameFactory.getInstance().createGameForPlayer(GameEnum.BOWLING, line[0]));
                 }
 
                 int score = 0;
 
+                // if it's a foul then it means 0 points
                 if(!line[1].equals("F")) {
                     score = Integer.valueOf(line[1]);
                 }
@@ -48,6 +49,10 @@ public class App
         }
     }
 
+    /**
+     * Prints every player's score
+     * @param players
+     */
     private static void printResults(Map<String, Game> players) {
 
         System.out.print("Frame");

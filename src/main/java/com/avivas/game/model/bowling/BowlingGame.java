@@ -20,12 +20,18 @@ public class BowlingGame extends Game {
         getCurrentFrame().roll(points);
     }
 
+    /**
+     * Builds a string containing the score formatted as it was requested on the test
+     * @return
+     */
     @Override
     public String getPrintableScore() {
+        // printing pitfalls
         StringBuilder printableScore = new StringBuilder(player).append("\nPinfalls");
         Map<Integer, Frame> data = (Map<Integer, Frame>) scoreCalculator.calculate(frames);
 
 
+        // separated processing for normal frames and the final frame below
         data.entrySet().stream().filter(entry -> !entry.getValue().isFinalFrame()).forEach(entry -> {
             Frame frame = entry.getValue();
 
@@ -48,6 +54,7 @@ public class BowlingGame extends Game {
             printableScore.append("\t").append(frame.getThirdBall() == 10 ? "X" : frame.getThirdBall());
         });
 
+        // printing score
         printableScore.append("\nScore");
 
         data.forEach((key, value) -> printableScore.append("\t\t").append(value.getScore()));
@@ -55,6 +62,10 @@ public class BowlingGame extends Game {
         return printableScore.toString();
     }
 
+    /**
+     * Returns the current frame in case this is still not finished, otherwise creates a new one and return it
+     * @return the current frame
+     */
     public Frame getCurrentFrame() {
         if(frames.isEmpty()) {
             return createFrame();
@@ -69,6 +80,10 @@ public class BowlingGame extends Game {
         return frame;
     }
 
+    /**
+     * Creates a new frame
+     * @return
+     */
     private Frame createFrame() {
         Frame frame = new Frame(frames.size() == MAX_FRAMES - 1);
         frames.put(frames.size(), frame);
