@@ -83,4 +83,8 @@ public class Frame {
         this.score = score;
     }
 
+    public int getScore() {
+        return score;
+    }
+
 }

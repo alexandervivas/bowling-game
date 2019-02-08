@@ -49,6 +49,12 @@ public class BowlingGame extends Game {
             printableScore.append("\t").append(frame.getThirdBall() == 10 ? "X" : frame.getThirdBall());
         });
 
+        printableScore.append("\nScore");
+
+        data.entrySet().stream().filter(entry -> !entry.getValue().isFinalFrame()).forEach(entry -> {
+            printableScore.append("\t\t").append(entry.getValue().getScore());
+        });
+
         return printableScore.toString();
     }
 
