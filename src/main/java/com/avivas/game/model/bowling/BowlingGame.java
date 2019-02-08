@@ -24,8 +24,8 @@ public class BowlingGame extends Game {
     @Override
     public String getPrintableScore() {
         StringBuilder printableScore = new StringBuilder(player).append("\nPinfalls");
-
         Map<Integer, Frame> data = (Map<Integer, Frame>) scoreCalculator.calculate(frames);
+
 
         data.entrySet().stream().filter(entry -> !entry.getValue().isFinalFrame()).forEach(entry -> {
             Frame frame = entry.getValue();
@@ -51,9 +51,7 @@ public class BowlingGame extends Game {
 
         printableScore.append("\nScore");
 
-        data.entrySet().stream().filter(entry -> !entry.getValue().isFinalFrame()).forEach(entry -> {
-            printableScore.append("\t\t").append(entry.getValue().getScore());
-        });
+        data.forEach((key, value) -> printableScore.append("\t\t").append(value.getScore()));
 
         return printableScore.toString();
     }
